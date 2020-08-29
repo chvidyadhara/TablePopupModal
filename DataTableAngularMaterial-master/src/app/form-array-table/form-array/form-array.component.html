@@ -1,0 +1,74 @@
+<div class="form-group">
+    <form [formGroup]="myForm" role="form">
+      <div formArrayName="formArrList">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>School</th>
+    
+          </tr>
+    
+          <tr *ngFor="let list of myForm.get('formArrList').controls;let i = index" [formGroupName]="i">
+            <td>
+              <div class="col-sm-6">
+                <input class="form-control" type="text"  formControlName="name"/>
+              </div>
+            </td>
+            <td>
+              <div class="col-sm-6">
+                <input class="form-control" type="text"  formControlName="school"/>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+
+
+    <div>
+        <form [formGroup]="myForm" role="form">
+          <ng-container formArrayName="formArrList">
+        
+          <mat-table #table [dataSource]="myDataSource">
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+        
+            <ng-container *ngFor="let detailsItems of myForm.get('formArrList').controls;let i = index" [formGroupName]="i">
+        
+        
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+              <mat-cell *matCellDef="let element"> 
+        
+                <mat-form-field class="" hideRequiredMarker>
+              <input matInput formControlName="name" type="text" class="form-control"
+                     autocomplete="off"
+                     placeholder="name">
+              </mat-form-field>
+        
+              </mat-cell>
+            </ng-container>
+        
+        
+        
+            <ng-container matColumnDef="school">
+              <mat-header-cell *matHeaderCellDef>School</mat-header-cell>
+              <mat-cell *matCellDef="let element"> 
+        
+               <mat-form-field class="" hideRequiredMarker>
+              <input matInput formControlName="school" type="text" class="form-control"
+                     autocomplete="off"
+                     placeholder="school">
+              </mat-form-field>
+              </mat-cell>
+            </ng-container>
+        
+            </ng-container>
+        
+        
+        
+          </mat-table>
+          </ng-container>
+        
+        </form>

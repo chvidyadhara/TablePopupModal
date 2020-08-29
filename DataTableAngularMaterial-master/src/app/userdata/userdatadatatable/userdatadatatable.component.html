@@ -1,0 +1,50 @@
+<div class="container">
+    <h4>Data Table:</h4>
+    <div>
+        <mat-icon (click)="toggleTheme()" title="Change theme">format_color_fill</mat-icon>
+    </div><br/>
+    <form [formGroup]="form">
+       
+    <div class="example-container mat-elevation-z9">
+        
+        <mat-table    [dataSource]="dataSource" formArrayName="users" matSort>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row;let i = index; columns: displayedColumns;"></mat-row>
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> EmpId </mat-header-cell>
+                <mat-cell *matCellDef="let row; let rowIndex = index"  [formGroupName]="rowIndex"> 
+                    <input matInput type="text" size="2" formControlName="id">
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                <mat-cell *matCellDef="let row let rowIndex = index"  [formGroupName]="rowIndex"> 
+                    <input matInput type="text"  formControlName="name" >
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+                <mat-cell *matCellDef="let row let rowIndex = index"  [formGroupName]="rowIndex"> 
+                    <input matInput type="text"  formControlName="email">
+                </mat-cell>  </ng-container>
+
+            <!-- Symbol Column -->
+
+            <!-- <ng-container >
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+                <mat-cell *matCellDef="let row let rowIndex = index"  [formGroupName]="rowIndex"> 
+                    <input type="text" size="2" >
+                </mat-cell>  </ng-container> -->
+
+           
+        </mat-table>
+        <!-- <button mat-raised-button color="primary" type="button" (click)="addRow()">Add row</button> -->
+    </div>
+    <!-- <button mat-raised-button color="primary" type="button" (click)="addRow()">Add row</button> -->
+    </form>
+    <button mat-raised-button color="primary" type="button" (click)="addRow()">Add row</button>
+</div>

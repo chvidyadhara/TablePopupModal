@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Dialog with elements</h1>
+<div>
+    <mat-form-field appearance="outline">
+        <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder" matInput [(ngModel)]="local_data.name">
+        
+      </mat-form-field>
+</div>
+<div>
+  <button mat-button [mat-dialog-close]="true" (click)="doAction()"  color="blue" cdkFocusInitial>Save</button>
+  <button mat-button [mat-dialog-close]="true"  (click)="closeDialog()"  color="warn" cdkFocusInitial>Cancle</button>
+  
+</div>
